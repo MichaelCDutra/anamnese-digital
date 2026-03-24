@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Anamnese Premium | Carolina Queiroz Estética</title>
+    
+    <!-- Fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="top-progress" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" id="p-bar"></div></div>
+<div class="step-txt" id="s-txt" aria-live="polite">Psg 1 de 5</div>
+<div class="toast" id="toast">☁️ Rascunho salvo</div>
+
+<div class="app-container">
+    <nav class="sidebar" aria-label="Navegação Lateral">
+        <div class="logo-box"><img src="/logo.webp" alt="Carolina Queiroz" onerror="this.style.display='none'"></div>
+        <ul class="nav-list">
+            <li><button class="nav-link active" onclick="App.Nav.go(1)" id="l1"><i>👤</i> Identificação</button></li>
+            <li><button class="nav-link" onclick="App.Nav.go(2)" id="l2"><i>🏥</i> Saúde & Hábitos</button></li>
+            <li><button class="nav-link" onclick="App.Nav.go(3)" id="l3"><i>✨</i> Foco Clínico</button></li>
+            <li><button class="nav-link" onclick="App.Nav.go(4)" id="l4"><i>📸</i> Avaliação & Fotos</button></li>
+            <li><button class="nav-link" onclick="App.Nav.go(5)" id="l5"><i>✒️</i> Termo Legal</button></li>
+        </ul>
+    </nav>
+
+    <main class="main-view">
+        <header class="hero">
+            <h1><i style="color:var(--primary-soft); font-style:normal">✨</i> Expertise em Estética</h1>
+            <p>Seu prontuário exclusivo para uma jornada premium.</p>
+        </header>
+
+        <form id="appForm" novalidate onsubmit="return false;">
+            <!-- PASSO 1 -->
+            <div class="panel active" id="p1" role="region">
+                <h2 class="p-title">Dados Pessoais</h2>
+                <p class="p-subtitle">Iniciando seu registro clínico de forma segura.</p>
+                <div class="form-row">
+                    <div class="field" style="grid-column: 1 / -1;">
+                        <label for="nome">Nome Completo <span class="req">*</span></label>
+                        <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+                        <span class="err-msg">Preencha seu nome completo.</span>
+                    </div>
+                    <div class="field">
+                        <label for="wa">WhatsApp <span class="req">*</span></label>
+                        <input type="tel" id="wa" name="wa" required placeholder="(31) 99999-9999" maxlength="15">
+                        <span class="err-msg">WhatsApp inválido.</span>
+                    </div>
+                    <div class="field">
+                        <label for="nasc">Data Nasc. <span class="req">*</span></label>
+                        <input type="date" id="nasc" name="nasc" required>
+                        <span class="err-msg">Data obrigatória.</span>
+                    </div>
+                </div>
+                <div class="form-row cond-wrap" id="wrap-resp">
+                    <div class="field" style="width:100%">
+                        <label for="responsavel">Nome do Responsável Legal (+18) <span class="req">*</span></label>
+                        <input type="text" id="responsavel" name="responsavel" placeholder="Pai, mãe ou tutor legal">
+                        <span class="err-msg">Campo obrigatório para menores.</span>
+                    </div>
+                </div>
+                <div class="actions"><div></div><button type="button" class="btn btn-p" onclick="App.Nav.go(2)">Avançar ➞</button></div>
+            </div>
+
+            <!-- PASSO 2 -->
+            <div class="panel" id="p2" role="region">
+                <h2 class="p-title">Perfil de Saúde</h2>
+                <p class="p-subtitle">Crucial para sua segurança durante os procedimentos.</p>
+                <div class="form-row">
+                    <div class="field">
+                        <label for="alergia">Possui alergias? <span class="req">*</span></label>
+                        <select id="alergia" name="alergia" required>
+                            <option value="">Selecione...</option><option value="Não">Não</option><option value="Sim">Sim, tenho</option>
+                        </select>
+                        <div class="cond-wrap" id="w-alergia"><input type="text" name="al_obs" placeholder="Quais alergias? *"></div>
+                    </div>
+                    <div class="field">
+                        <label for="gestante">Gestante ou Lactante? <span class="req">*</span></label>
+                        <select id="gestante" name="gestante" required>
+                            <option value="">Selecione...</option><option value="Não">Não</option><option value="Sim">Sim, estou</option>
+                        </select>
+                        <div class="cond-wrap" id="w-gestante"><input type="text" name="gest_obs" placeholder="Quantos meses? *"></div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="field"><label>Medicamentos Contínuos?</label><input type="text" name="meds" placeholder="Ex: Anticoncepcional..."></div>
+                    <div class="field"><label>Água (L/dia)</label><input type="number" step="0.5" name="agua" placeholder="Ex: 2.5"></div>
+                </div>
+                <div class="actions"><button type="button" class="btn btn-s" onclick="App.Nav.go(1)">⟵ Voltar</button><button type="button" class="btn btn-p" onclick="App.Nav.go(3)">Avançar ➞</button></div>
+            </div>
+
+            <!-- PASSO 3 -->
+            <div class="panel" id="p3" role="region">
+                <h2 class="p-title">Foco Clínico</h2>
+                <p class="p-subtitle">Para onde devemos direcionar nossa expertise?</p>
+                <div class="choice-grid">
+                    <button type="button" class="c-card active" id="ch-f" onclick="App.UI.setFoco('facial')">
+                        <i>✨</i><strong>Avaliação Facial</strong><span>Face, Colo e Pescoço</span>
+                    </button>
+                    <button type="button" class="c-card" id="ch-c" onclick="App.UI.setFoco('corporal')">
+                        <i>🧖‍♀️</i><strong>Avaliação Corporal</strong><span>Contorno e Medidas</span>
+                    </button>
+                </div>
+                <!-- Facial -->
+                <div id="df" class="cond-wrap" style="display:block; margin-top:3rem;">
+                    <div class="form-row">
+                        <div class="field"><label>Fototipo de Pele</label><select name="foto_f"><option>I - Muito Alva</option><option>II - Branca</option><option>III - Morena Clara</option><option>IV - Morena Moderada</option><option>V - Morena Escura</option><option>VI - Negra</option></select></div>
+                        <div class="field"><label>Estado da Pele</label><select name="tipo_p"><option>Oleosa/Mista</option><option>Seca/Sensível</option><option>Normal</option></select></div>
+                    </div>
+                </div>
+                <!-- Corporal -->
+                <div id="dc" class="cond-wrap" style="margin-top:3rem;">
+                    <div class="form-row">
+                        <div class="field"><label>Peso (Kg)</label><input type="number" name="peso"></div>
+                        <div class="field"><label>Cintura (cm)</label><input type="number" name="cintura"></div>
+                        <div class="field"><label>Abdômen (cm)</label><input type="number" name="abd"></div>
+                    </div>
+                </div>
+                <div class="actions"><button type="button" class="btn btn-s" onclick="App.Nav.go(2)">⟵ Voltar</button><button type="button" class="btn btn-p" onclick="App.Nav.go(4)">Avançar ➞</button></div>
+            </div>
+
+            <!-- PASSO 4 -->
+            <div class="panel" id="p4" role="region">
+                <h2 class="p-title">Sua Queixa</h2>
+                <p class="p-subtitle">Fale sobre o que a incomoda e suas expectativas.</p>
+                <div class="field" style="margin-bottom:2rem;">
+                    <label>Queixa Principal <span class="req">*</span></label>
+                    <textarea name="queixa" rows="3" required placeholder="O que mais a incomoda hoje?"></textarea>
+                    <span class="err-msg">Obrigatório descrever a queixa.</span>
+                </div>
+                <div class="field" style="margin-bottom:2rem;">
+                    <label>Expectativas <span class="req">*</span></label>
+                    <textarea name="objetivo" rows="2" required placeholder="Qual o resultado desejado?"></textarea>
+                    <span class="err-msg">Obrigatório descrever o objetivo.</span>
+                </div>
+                <div class="field">
+                    <label>Anexos Clínicos (Opcional - Máx 3)</label>
+                    <div class="up-zone" id="up-zone-btn" tabindex="0">
+                        <i>📸</i><strong>Carregar Fotos</strong><span>Serão comprimidas e criptografadas</span>
+                        <div class="loader" id="loader">Compactando...</div>
+                    </div>
+                    <input type="file" id="file-in" accept="image/jpeg,image/png,image/webp" multiple style="display:none">
+                    <div class="gal-grid" id="gal"></div>
+                </div>
+                <div class="actions"><button type="button" class="btn btn-s" onclick="App.Nav.go(3)">⟵ Voltar</button><button type="button" class="btn btn-p" onclick="App.Nav.go(5)">Ir para Assinatura ➞</button></div>
+            </div>
+
+            <!-- PASSO 5 -->
+            <div class="panel" id="p5" role="region">
+                <h2 class="p-title">Assinatura Digital</h2>
+                <p class="p-subtitle">Aceite os termos e rubrique para finalizar sua ficha.</p>
+
+                <div class="tcle-box" tabindex="0">
+                    <strong>T.C.L.E - REGULAMENTAÇÃO LGPD LEI 13.709/18</strong>
+                    <p>1. <strong>Consentimento:</strong> Autorizo o tratamento de meus dados sensíveis para fins clínicos e de acompanhamento estético, com garantia de sigilo e criptografia.</p>
+                    <p style="margin-top:10px">2. <strong>Responsabilidade:</strong> Declaro que não omiti informações de saúde que possam comprometer a segurança dos procedimentos. Estou ciente dos riscos inerentes a qualquer intervenção estética.</p>
+                    <p style="margin-top:10px">3. <strong>Direitos:</strong> Compreendo meu direito de exclusão destes dados em conformidade ao Art. 17 da LGPD, mediante solicitação formal à clínica.</p>
+                </div>
+
+                <label class="c-row">
+                    <input type="checkbox" id="check-tcle">
+                    <span>Li e <strong>estou de acordo</strong> com os termos citados.</span>
+                </label>
+
+                <div class="sig-container">
+                    <div class="sig-wrapper" id="sig-wrap">
+                        <canvas id="sig-hw"></canvas>
+                    </div>
+                    <button type="button" class="btn-clear" onclick="App.Sig.clear()"><i>↺</i> Refazer Rubrica</button>
+                    <div style="text-align:center; padding-top:10px; color:var(--text-muted); font-size:0.8rem">Assine no quadro se o checkbox estiver marcado.</div>
+                </div>
+
+                <div class="actions">
+                    <button type="button" class="btn btn-s" onclick="App.Nav.go(4)">⟵ Voltar</button>
+                    <button type="submit" class="btn btn-p" id="btn-sub" disabled onclick="App.Email.run(event)">
+                        <div class="spinner" id="btn-sp"></div><span id="btn-txt">Confirmar e Enviar ✓</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- SUCESSO -->
+            <div class="panel" id="p-ok">
+                <div style="text-align: center; padding: 2rem 0;">
+                    <div style="font-size: 5rem; margin-bottom: 2rem;">🕊️</div>
+                    <h2 class="p-title">Prontuário Registrado!</h2>
+                    <p style="margin-bottom: 2rem; color:var(--text-muted); font-size:1.1rem">Sua ficha foi enviada com sucesso para nossa central técnica.</p>
+                    <button type="button" class="btn btn-pdf" onclick="App.PDF.download()">📑 Baixar Meu PDF Oficial</button>
+                    <button type="button" class="btn btn-wa" onclick="App.UI.sendWA()">📲 Avisar no WhatsApp</button>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <nav class="mobile-nav">
+        <button type="button" class="m-dot active" onclick="App.Nav.go(1)" id="m1"><i>👤</i><span>Perfil</span></button>
+        <button type="button" class="m-dot" onclick="App.Nav.go(2)" id="m2"><i>🏥</i><span>Saúde</span></button>
+        <button type="button" class="m-dot" onclick="App.Nav.go(3)" id="m3"><i>✨</i><span>Foco</span></button>
+        <button type="button" class="m-dot" onclick="App.Nav.go(4)" id="m4"><i>📝</i><span>Queixa</span></button>
+        <button type="button" class="m-dot" onclick="App.Nav.go(5)" id="m5"><i>✒️</i><span>Assinar</span></button>
+    </nav>
+</div>
+
+<script type="module" src="/src/js/main.js"></script>
+
+<!-- Event Listener Helpers for legacy onclick compatibility -->
+<script>
+    document.getElementById('up-zone-btn').onclick = () => document.getElementById('file-in').click();
+</script>
+
+</body>
+</html>
