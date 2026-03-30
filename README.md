@@ -1,4 +1,4 @@
-# 💎 Carolina Queiroz Estética - Anamnese Digital (V3.0)
+# 💎  Anamnese Digital
 
 Aplicação web profissional para coleta de fichas de anamnese clínica, desenvolvida para proporcionar uma experiência de luxo, segura e em conformidade com a LGPD.
 
